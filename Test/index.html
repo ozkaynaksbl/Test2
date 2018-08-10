@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+      <title>Menus</title>
+   </head>
+   <body>
+      <script type = "text/javascript">
+         const {remote} = require('electron')
+         const {Tray, Menu} = remote
+         const path = require('path')
+
+        
+         var x = path.join('Users', 'Test', 'userr.png');
+         let trayIcon = new Tray(path.join(x))
+console.log(x);
+         const trayMenuTemplate = [
+            {
+               label: 'Empty Application',
+               enabled: false
+            },
+            
+            {
+               label: 'Settings',
+               click: function () {
+                  console.log("Clicked on settings")
+               }
+            },
+            
+            {
+               label: 'Help',
+               click: function () {
+                  console.log("Clicked on Help")
+               }
+            }
+         ]
+         
+         let trayMenu = Menu.buildFromTemplate(trayMenuTemplate)
+         trayIcon.setContextMenu(trayMenu)
+      </script>
+   </body>
+</html>
